@@ -22,6 +22,21 @@
       <artifactId>camel-core</artifactId>
       <version>${camel.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-stream</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jms</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-camel</artifactId>
+      <version>5.6.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>intro-apache-camel</finalName>
