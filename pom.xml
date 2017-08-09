@@ -9,10 +9,7 @@
   <url>http://maven.apache.org</url>
   <properties>
     <camel.version>2.19.2</camel.version>
-<<<<<<< HEAD
     <junit.version>4.12</junit.version>
-=======
->>>>>>> 9513f4d6ac5c2ed08a1f6701647d8d5d98ace1b2
   </properties>
   <dependencies>
     <dependency>

@@ -12,7 +12,6 @@ import org.junit.Test;
  * 
  * @version 
  */
-// START SNIPPET: example
 public class FilterTest extends CamelTestSupport {
 
     @EndpointInject(uri = "mock:result")
@@ -50,4 +49,3 @@ public class FilterTest extends CamelTestSupport {
         };
     }
 }
-// END SNIPPET: example
