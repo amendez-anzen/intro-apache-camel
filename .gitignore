@@ -1,2 +1,5 @@
 #Ignorar directorio target en commit
 target
+.classpath
+.settings
+.project
