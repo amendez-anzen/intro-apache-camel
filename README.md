@@ -24,3 +24,14 @@ Estos son algunos conceptos que se utilizan en Camel, es importante tenerlos en 
 5. **Processor**: Usa/modifica _exchanges_ entrantes; la salida de un _Processor_ es conectada a la entrada de otro.
 6. **Endpoint**: Modela el fin de un canal, se configura usando _URI_, por ejemplo: _file:data/inbox?delay=5000_
 7. **Component**: Fábrica de _endpoints_, referido con prefijos, (jms:, file:, etc).
+
+## Primeros pasos
+
+Para la ejecución de Camel, es necesaria la interfaz **CamelContext**, la cual es responsable
+del procesamiento de _messages_ y _routes_.
+
+La sentencia _from(...)_ al inicio de un _route_ define un _endpoint_ o una ubicación específica a
+una tecnología que el motor te enrutamiento de camel utiliza para obtener los _messages_. Los _enpoints_ son definidos USANDO _URIs_, la primer parte de una _URI_ especifica el componente que
+está siendo usado para para consumir un mensaje y, el resto es el conjunto de instrucciones para
+ese componente en específico.
+
