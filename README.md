@@ -31,7 +31,7 @@ Para la ejecución de Camel, es necesaria la interfaz **CamelContext**, la cual 
 del procesamiento de _messages_ y _routes_.
 
 La sentencia _from(...)_ al inicio de un _route_ define un _endpoint_ o una ubicación específica a
-una tecnología que el motor te enrutamiento de camel utiliza para obtener los _messages_. Los _enpoints_ son definidos USANDO _URIs_, la primer parte de una _URI_ especifica el componente que
+una tecnología que el motor de enrutamiento de camel utiliza para obtener los _messages_. Los _enpoints_ son definidos USANDO _URIs_, la primer parte de una _URI_ especifica el componente que
 está siendo usado para para consumir un mensaje y, el resto es el conjunto de instrucciones para
 ese componente en específico.
 
