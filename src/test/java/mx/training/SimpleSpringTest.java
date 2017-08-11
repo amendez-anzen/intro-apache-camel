@@ -4,10 +4,7 @@ import org.apache.camel.test.spring.CamelSpringTestSupport;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
 
-
-//@ContextConfiguration("classpath:META-INF/spring/simpleSpring-context.xml")
 public class SimpleSpringTest extends CamelSpringTestSupport{
 
     @Override
@@ -21,5 +18,5 @@ public class SimpleSpringTest extends CamelSpringTestSupport{
         assertNotNull(this.applicationContext.getId());
     }
 
-    
+
 }
