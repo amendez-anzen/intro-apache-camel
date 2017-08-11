@@ -55,7 +55,7 @@ vida de un bundle de _OSGi_; un objeto dentro del contexto de Spring, etc.
 * Revisar ejemplo: [simplespring-context.xml](src/main/resources/META_INF/spring/simplespring-context.xml)
 
 
-Un _component_ es una fábrica para crear endpoints que pueden ser productores, consumidores o ambos. Una implmentación tiene típicamente propiedades, por ejemplo:
+Un _component_ es una fábrica para crear endpoints que pueden ser _Producers_, _Consumers_ o ambos. Una implementación tiene típicamente propiedades, por ejemplo:
 
 ```xml
 <bean id="myFavouriteMQ" class="org.apache.camel.component.jms.JmsComponent">
@@ -68,8 +68,23 @@ Todos los componentes implementan un método usado para procesar un endpoint URI
 Endpoint createEndpoint(String uri) throws Exception;
 ```
 
+Un _endpoint_ se compone de :
+* _scheme_: La parte que antes de los dos puntos (:), que indica la implementación del componente.
+* _properties:: La parte después del los dos puntos (:), indica la configuración específica de la tecnología.
+
+Ya que el _endpoint_ también es una fábrica o _Factory_, Camel lo usa para para crear _Producers_ y _Consumers_,
+esto depende del contexto donde se usa el _URI_. Los siguientes métodos del _Factory_ son definidos en la interfaz:
+
+```java
+Producer createProducer() throws Exception;
+Consumer createConsumer(Processor processor) throws Exception;
+```
+Las clases anteriores se encargan de la comunicación con la tecnología correspondiente. Si en _endpoint_ es usado en la sentencia _from(...)_ Camel creará un _Consumer_, si es usado en el bloque _to(...)_ se creará un _Producer_.
+
+> Nota: Un mismo _Component_ puede ser instanciado múltiples ocasiones con diferente _id_.
+
 
 # Referencias
 
 * Apache Camel Developer's cookbook, Scott Cranton.
-* http://camel.apache.org
+* Sitio oficial de Apache Camel, http://camel.apache.org
