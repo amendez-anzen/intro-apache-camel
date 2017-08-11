@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       ">
+
+    <!-- Bean para Loggeo, esto es un componente en Camel -->
+    <bean id="mylogger" class="org.apache.camel.component.log.LogComponent"/>
+
+    <!-- El contexto de camel debe ser definido solo una vez. Todo dentro es configuracion de camel -->
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route>
+            <from uri="timer:logMessageTimer?period=1s"/>
+            <!-- El id del bean (LogComponent) se usa en el endpoint -->
+            <to uri="mylogger:insideTheRoute?showHeaders=true"/>
+            <log message="Event triggered by ${property.CamelTimerName} at ${header.CamelTimerFiredTime}"/>
+        </route>
+    </camelContext>
+
+</beans>
