@@ -52,7 +52,7 @@ standalone, como una variable de instancia en dentro de _javax.servlet.ServletCo
 una aplicación web, iniciándola y deteniéndola con la aplicación; en un objeto ligado al ciclo de
 vida de un bundle de _OSGi_; un objeto dentro del contexto de Spring, etc.
 
-* Revisar ejemplo: [simplespring-context.xml](../src/main/java/resources/META_INF/spring/simplespring-context.xml)
+* Revisar ejemplo: [simplespring-context.xml](src/main/resources/META_INF/spring/simplespring-context.xml)
 
 
 
