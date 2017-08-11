@@ -28,7 +28,7 @@ Estos son algunos conceptos que se utilizan en Camel, es importante tenerlos en 
 ## Primeros pasos
 
 Para la ejecución de Camel, es necesaria la interfaz **CamelContext**, la cual es responsable
-del procesamiento de _messages_ y _routes_. [1]
+del procesamiento de _messages_ y _routes_.
 
 La sentencia _from(...)_ al inicio de un _route_ define un _endpoint_ o una ubicación específica a
 una tecnología que el motor de enrutamiento de camel utiliza para obtener los _messages_. Los _enpoints_ son definidos USANDO _URIs_, la primer parte de una _URI_ especifica el componente que
@@ -52,4 +52,12 @@ standalone, como una variable de instancia en dentro de _javax.servlet.ServletCo
 una aplicación web, iniciándola y deteniéndola con la aplicación; en un objeto ligado al ciclo de
 vida de un bundle de _OSGi_; un objeto dentro del contexto de Spring, etc.
 
-[1]: Apache Camel Developer's cookbook, Scott Cranton.
+
+
+
+
+
+# Referencias
+
+* Apache Camel Developer's cookbook, Scott Cranton.
+* http://camel.apache.org
