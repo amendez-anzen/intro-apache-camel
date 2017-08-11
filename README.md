@@ -55,7 +55,18 @@ vida de un bundle de _OSGi_; un objeto dentro del contexto de Spring, etc.
 * Revisar ejemplo: [simplespring-context.xml](src/main/resources/META_INF/spring/simplespring-context.xml)
 
 
+Un _component_ es una fábrica para crear endpoints que pueden ser productores, consumidores o ambos. Una implmentación tiene típicamente propiedades, por ejemplo:
 
+```xml
+<bean id="myFavouriteMQ" class="org.apache.camel.component.jms.JmsComponent">
+    <property name="connectionFactory" ref="myConnectionFactory"/>
+</bean>
+```
+Todos los componentes implementan un método usado para procesar un endpoint URI.
+
+```java
+Endpoint createEndpoint(String uri) throws Exception;
+```
 
 
 # Referencias
