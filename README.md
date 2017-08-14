@@ -79,9 +79,10 @@ esto depende del contexto donde se usa el _URI_. Los siguientes métodos del _Fa
 Producer createProducer() throws Exception;
 Consumer createConsumer(Processor processor) throws Exception;
 ```
-Las clases anteriores se encargan de la comunicación con la tecnología correspondiente. Si en _endpoint_ es usado en la sentencia _from(...)_ Camel creará un _Consumer_, si es usado en el bloque _to(...)_ se creará un _Producer_.
+Las clases anteriores se encargan de la comunicación con la tecnología correspondiente. Si el _endpoint_ es usado en la sentencia _from(...)_ Camel creará un _Consumer_, si es usado en el bloque _to(...)_ se creará un _Producer_.
 
 > Nota: Un mismo _Component_ puede ser instanciado múltiples ocasiones con diferente _id_.
+
 
 
 # Referencias

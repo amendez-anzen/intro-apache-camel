@@ -5,17 +5,16 @@ import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class SimpleSpringTest extends CamelSpringTestSupport{
-
+public class SimpleSpringComponentTest extends CamelSpringTestSupport {
+    
     @Override
     protected AbstractApplicationContext createApplicationContext() {
-        return new ClassPathXmlApplicationContext("classpath:META-INF/spring/simplespring-context.xml");
+        return new ClassPathXmlApplicationContext("classpath:META-INF/spring/simplespringcomponent-context.xml");
     }
 
-
     @Test
-    public void checkForCamelContext(){
-        assertNotNull(this.applicationContext.getId());
+    public void testBasicComponent(){
+        assertEquals(true,true);
     }
 
 }
