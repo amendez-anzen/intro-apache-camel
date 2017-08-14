@@ -70,7 +70,7 @@ Endpoint createEndpoint(String uri) throws Exception;
 
 Un _endpoint_ se compone de :
 * _scheme_: La parte que antes de los dos puntos (:), que indica la implementación del componente.
-* _properties:: La parte después del los dos puntos (:), indica la configuración específica de la tecnología.
+* _properties_: La parte después del los dos puntos (:), indica la configuración específica de la tecnología.
 
 Ya que el _endpoint_ también es una fábrica o _Factory_, Camel lo usa para para crear _Producers_ y _Consumers_,
 esto depende del contexto donde se usa el _URI_. Los siguientes métodos del _Factory_ son definidos en la interfaz:
@@ -83,9 +83,19 @@ Las clases anteriores se encargan de la comunicación con la tecnología corresp
 
 > Nota: Un mismo _Component_ puede ser instanciado múltiples ocasiones con diferente _id_.
 
+### Uso de componentes
+
+Camel abstrae código de integración encapsulándolo en _Components_, lo que permite
+enfocarse en la lógica de negocio de tu integración sin que entres en el detalle
+fino del "transporte".
+
+* Ejemplo : [simplespring-context.xml](src/main/resources/META_INF/spring/simplespring-context.xml)
+* Ejemplo con _@Component_: [simplespringcomponent-context.xml](src/main/resources/META_INF/spring/simplespringcomponent-context.xml)
+
+Ejecutar
+> mvn test
 
 
 # Referencias
-
 * Apache Camel Developer's cookbook, Scott Cranton.
 * Sitio oficial de Apache Camel, http://camel.apache.org
