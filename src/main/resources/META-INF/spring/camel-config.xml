@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       ">
+
+    <bean id="RestletComponent" class="org.restlet.Component" />
+ 
+    <bean id="RestletComponentService" class="org.apache.camel.component.restlet.RestletComponent">
+    <constructor-arg index="0">
+        <ref bean="RestletComponent" />
+    </constructor-arg>
+    </bean>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+    
+    <route id="RS_RestletDemo">
+        <from uri="restlet:/demo/{id}" />
+        <transform>
+        <simple>Request type : ${header.CamelHttpMethod} and ID : ${header.id}</simple>
+        </transform>
+    </route> 
+    </camelContext>
+
+</beans>
