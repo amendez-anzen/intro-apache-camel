@@ -8,22 +8,31 @@
            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
        ">
 
+
+
     <bean id="RestletComponent" class="org.restlet.Component" />
- 
+
+    <!-- Using the Restlet servlet within a webapp -->
     <bean id="RestletComponentService" class="org.apache.camel.component.restlet.RestletComponent">
-    <constructor-arg index="0">
-        <ref bean="RestletComponent" />
-    </constructor-arg>
+        <constructor-arg index="0">
+            <ref bean="RestletComponent" />
+        </constructor-arg>
+        <property name="maxThreads" value="100"/>
     </bean>
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">
-    
-    <route id="RS_RestletDemo">
-        <from uri="restlet:/demo/{id}" />
-        <transform>
-        <simple>Request type : ${header.CamelHttpMethod} and ID : ${header.id}</simple>
-        </transform>
-    </route> 
+        <route id="RS_RestletDemo">
+            <from uri="restlet:/demo/{id}" />
+            <transform>
+            <simple>Request type : ${header.CamelHttpMethod} and ID : ${header.id}</simple>
+            </transform>
+        </route>
+        <route id="RS_users">
+            <from uri="restlet:/users?restletMethod=post"/>
+            <transform>
+                <simple>Hello world!</simple>
+            </transform>
+        </route>
     </camelContext>
 
 </beans>
