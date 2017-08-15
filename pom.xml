@@ -59,6 +59,7 @@
       <artifactId>camel-restlet</artifactId>
       <version>${camel.version}</version>
     </dependency>
+    <!-- Spring extension to restlet -->
     <dependency>
       <groupId>org.restlet.jee</groupId>
       <artifactId>org.restlet.ext.spring</artifactId>
