@@ -1,37 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:camel="http://camel.apache.org/schema/spring"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
-       ">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-
-
-    <bean id="RestletComponent" class="org.restlet.Component" />
+    <bean id="RestletComponent" class="org.restlet.Component"/>
 
     <!-- Using the Restlet servlet within a webapp -->
     <bean id="RestletComponentService" class="org.apache.camel.component.restlet.RestletComponent">
-        <constructor-arg index="0">
-            <ref bean="RestletComponent" />
-        </constructor-arg>
+        <constructor-arg ref="RestletComponent"/>
         <property name="maxThreads" value="100"/>
     </bean>
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">
-        <route id="RS_RestletDemo">
-            <from uri="restlet:/demo/{id}" />
-            <transform>
-            <simple>Request type : ${header.CamelHttpMethod} and ID : ${header.id}</simple>
-            </transform>
+
+        <restConfiguration bindingMode="auto" component="restlet"/>
+
+        <rest>
+            <get uri="/demo/{id}">
+                <route>
+                    <transform>
+                        <simple>Request type : ${header.CamelHttpMethod} and ID : ${header.id}</simple>
+                    </transform>
+                </route>
+            </get>
+        </rest>
+    	<rest>
+    	   <post uri="/persons">
+    	      <to uri="direct:postPersons"/>
+           </post>
+           <get uri="/persons">
+              <to uri="direct:getPersons"/>
+           </get>
+           <get uri="/persons/{personId}">
+               <!-- <to uri="direct:getPersonId"/> -->
+                <to uri="direct:retrievePersonById"/>
+           </get>
+           <put uri="/persons/{personId}">
+               <!-- <to uri="direct:putPersonId"/> -->
+               <to uri="direct:retrievePersonById"/>
+           </put>
+           <delete uri="/persons/{personId}">
+               <!-- <to uri="direct:deletePersonId"/> -->
+               <to uri="direct:retrievePersonById"/>
+           </delete>    
+        </rest>
+
+        <route>
+            <from uri="direct:getPersons"/>
+            <setBody>
+                <constant>This should retrieve all persons</constant>
+            </setBody>
         </route>
-        <route id="RS_users">
-            <from uri="restlet:/users?restletMethod=post"/>
-            <transform>
-                <simple>Hello world!</simple>
-            </transform>
+        <route>
+            <from uri="direct:postPersons"/>
+            <setBody>
+                <constant>This should retrieve all persons</constant>
+            </setBody>
+        </route>
+        <route>
+            <from uri="direct:retrievePersonById"/>
+            <setBody>
+                <simple>Person with id ${header.personId}</simple>
+            </setBody>
         </route>
     </camelContext>
 
