@@ -146,5 +146,6 @@ Ejemplo configuración _camel-restlet_: [camel-config.xml](https://github.com/he
 # Referencias
 * [Apache Camel Developer's cookbook, Scott Cranton](https://github.com/CamelCookbook/camel-cookbook-examples)
 * [Sitio oficial de Apache Camel](http://camel.apache.org)
+* [Definición de servicios REST](http://www.restapitutorial.com/lessons/whatisrest.html)
 * [Servicio REST con Apache Camel](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Development_Guide/RestServices.html)
 * [Ejemplos repositorio Apache Camel](https://github.com/apache/camel#examples)
