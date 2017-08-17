@@ -5,16 +5,18 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-
+    <!-- Define the location of the Spring config file -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:META-INF/spring/camel-config.xml</param-value>
     </context-param>
 
+    <!-- Bootstrap Spring into the web app's lifecycle -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!-- Load the Camel servlet -->
     <servlet>
         <servlet-name>RestletServlet</servlet-name>
         <servlet-class>org.restlet.ext.spring.SpringServerServlet</servlet-class>
@@ -24,6 +26,7 @@
         </init-param>
     </servlet>
 
+    <!-- Map the servlet component to all endpoints in this context -->
     <servlet-mapping>
         <servlet-name>RestletServlet</servlet-name>
         <url-pattern>/rs/v1/*</url-pattern>
