@@ -17,6 +17,16 @@ public class UserService {
         return user;
     }
 
+    public int createUser(User newUser){
+        //TODO: Definir logica para crear usuario.
+        return newUser.getId();
+    }
+
+    public User updateUser(User modifiedUser){
+        //TODO: Definir logica para actualizar usuario.
+        return modifiedUser;
+    }
+
     public List<User> getAllUsers(){
         return findAllUsers;
     }
