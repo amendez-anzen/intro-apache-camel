@@ -1,6 +1,12 @@
 # intro-apache-camel
 Conceptos básicos de apache camel y patrones de integración.
 
+**Requisitos**
+* Conocimiento de Spring
+* XML
+* Json
+* Maven
+
 
 ## Introducción
 Apache Camel es un framework de integración open source basado en [patrones de integración empresariales](http://camel.apache.org/enterprise-integration-patterns.html) o EIP (por sus siglas en inglés); su enfoque es hacer las integraciones más
@@ -52,7 +58,7 @@ standalone, como una variable de instancia en dentro de _javax.servlet.ServletCo
 una aplicación web, iniciándola y deteniéndola con la aplicación; en un objeto ligado al ciclo de
 vida de un bundle de _OSGi_; un objeto dentro del contexto de Spring, etc.
 
-* Revisar ejemplo: [simplespring-context.xml](src/main/resources/META_INF/spring/simplespring-context.xml)
+* Revisar ejemplo: [simplespring-context.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/simplespring-context.xml)
 
 
 Un _component_ es una fábrica para crear endpoints que pueden ser _Producers_, _Consumers_ o ambos. Una implementación tiene típicamente propiedades, por ejemplo:
@@ -89,13 +95,56 @@ Camel abstrae código de integración encapsulándolo en _Components_, lo que pe
 enfocarse en la lógica de negocio de tu integración sin que entres en el detalle
 fino del "transporte".
 
-* Ejemplo : [simplespring-context.xml](src/main/resources/META_INF/spring/simplespring-context.xml)
-* Ejemplo con _@Component_: [simplespringcomponent-context.xml](src/main/resources/META_INF/spring/simplespringcomponent-context.xml)
+* Ejemplo : [simplespring-context.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/simpleSpring-context.xml)
+* Ejemplo con _@Component_: [simplespringcomponent-context.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/simplespringcomponent-context.xml)
 
 Ejecutar
 > mvn test
 
 
+### Servicios REST
+
+Apache Camel provee distintos componentes para definir servicios REST (Representational State Transfer); _REST_ es una arquitectura
+para aplicaciones distribuidas que se centra en la transmisión de datos a través del protocolo _HTTP_, usando sólo los 4 verbos
+básicos de _HTTP_: **GET**, **POST**, **PUT** y **DELETE**. La arquitectura _REST_ explota  _HTTP_ directamente.
+
+Ya que la arquitectura _REST_ está construida sobre los verbos _HTTP_ estándar, en muchos casos puedes usar un browser como cliente
+_REST_.
+
+
+#### Definición de servicios con REST DSL
+
+_REST DSL_ provee una sintaxis simplificada para definición de servicios _REST_ en Java DSL o XML DSL. _REST DSL_ no provee
+propiamente una implementación _REST_ es un _wrapper_ de una implementación de _REST_ existente, de las cuales hay varias en
+Apache Camel.
+
+Algunas ventajas de _REST DSL_
+
+* Sintaxis moderna fácil de usar.
+* Compatible con múltiples componentes de Camel.
+* integración con _Swagger_ (a través del componente _camel-swagger_).
+
+Ya que _REST DSL_ no es una implementación de _REST_, se debe elegir alguna de las implementaciones 
+disponibles, los siguientes componentes están integrados con _REST DSL_.
+
+* Servlet (_camel-servlet_).
+* Netty HTTP (_camel-netty-http_).
+* Netty4 HTTP (_camel-netty4-http_).
+* Jetty (_camel-jetty_).
+* Restlet (_camel-restlet_).
+
+> NOTA: El componente _Rest_ (_camel-core_) no es una implementación _REST_. Al igual que _REST DSL_ es sólo un _facade_, por lo que requiere una implementación.
+
+Ejemplo configuración _camel-restlet_: [camel-config.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/camel-config.xml)
+
+**Ejecutar**
+> mvn jetty:run
+
+
+
+
 # Referencias
-* Apache Camel Developer's cookbook, Scott Cranton.
-* Sitio oficial de Apache Camel, http://camel.apache.org
+* [Apache Camel Developer's cookbook, Scott Cranton](https://github.com/CamelCookbook/camel-cookbook-examples)
+* [Sitio oficial de Apache Camel](http://camel.apache.org)
+* [Servicio REST con Apache Camel](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Development_Guide/RestServices.html)
+* [Ejemplos repositorio Apache Camel](https://github.com/apache/camel#examples)
