@@ -14,9 +14,29 @@
         <property name="maxThreads" value="100"/>
     </bean>
 
+    <bean id="userService" class="mx.training.rest.service.UserService"/>
+
+    
+
     <camelContext xmlns="http://camel.apache.org/schema/spring">
 
-        <restConfiguration bindingMode="auto" component="restlet"/>
+        <!-- El bindingMode define como se transmite el contenido en el cuerpo del mensaje, ejemplo: json, XML  -->
+        <restConfiguration bindingMode="json" component="restlet"/>
+
+        <!-- define los servicios REST que usan el base path /user -->
+        <rest path="/user">
+            <!-- Tag opcional -->
+            <description>Servicio REST de usuarios</description>
+            <get uri="/findAll">
+                <description>Encuentra todos los usuarios</description>
+                <to uri="bean:userService?method=getAllUsers()" />
+            </get>
+            <get uri="/{id}">
+                <description>Obtener un usuario por su id</description>
+                <param name="id" type="path" dataType="int"/>
+                <to uri="bean:userService?method=getUser(${header.id})"/>
+            </get>
+        </rest>
 
         <rest>
             <get uri="/demo/{id}">
