@@ -46,6 +46,11 @@
                 <param name="body" type="body" description="El usuario a actualizar"/>
                 <to uri="bean:userService?method=updateUser"/>
             </put>
+            <delete uri="/{id}">
+                <description>Elimina el usuario con el id especificado</description>
+                <param name="id" type="path" dataType="int"/>
+                <to uri="bean:userService?method=deleteUser(${header.id})"/>
+            </delete>
         </rest>
 
         <rest>

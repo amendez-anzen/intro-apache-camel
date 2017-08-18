@@ -30,4 +30,9 @@ public class UserService {
     public List<User> getAllUsers(){
         return findAllUsers;
     }
+
+    public int deleteUser(int id){
+        //TODO: Definir logica para borrar usuario.
+        return id;
+    }
 }
