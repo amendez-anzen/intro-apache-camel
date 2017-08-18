@@ -140,6 +140,10 @@ Ejemplo configuración _camel-restlet_: [camel-config.xml](https://github.com/he
 **Ejecutar**
 > mvn jetty:run
 
+>NOTA: Para probar los servicios, es necesario enviar el header **"Content-Type: application/json"** .
+
+> curl -X GET localhost:8080/intro-apache-camel/rs/v1/users/188
+> curl -H "Content-Type: application/json" -X POST -d '{"id": 1, "firstName":"xyz","lastName":"xyz"}' localhost:8080/intro-apache-camel/rs/v1/users
 
 
 
@@ -147,5 +151,6 @@ Ejemplo configuración _camel-restlet_: [camel-config.xml](https://github.com/he
 * [Apache Camel Developer's cookbook, Scott Cranton](https://github.com/CamelCookbook/camel-cookbook-examples)
 * [Sitio oficial de Apache Camel](http://camel.apache.org)
 * [Definición de servicios REST](http://www.restapitutorial.com/lessons/whatisrest.html)
+* [Recomendaciones para creación de servicios REST](http://www.restapitutorial.com/lessons/restquicktips.html)
 * [Servicio REST con Apache Camel](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Development_Guide/RestServices.html)
 * [Ejemplos repositorio Apache Camel](https://github.com/apache/camel#examples)

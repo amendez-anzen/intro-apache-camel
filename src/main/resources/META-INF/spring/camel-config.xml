@@ -21,16 +21,17 @@
 
         <!-- El bindingMode define como se transmite el contenido en el cuerpo del mensaje, ejemplo: json, XML  -->
         <restConfiguration bindingMode="json" component="restlet">
+            <!-- Activa formato legible a las respuestas de servicios. -->
             <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
 
         <!-- define los servicios REST que usan el base path /user -->
-        <rest path="/user">
+        <rest path="/users">
             <!-- Tag opcional -->
             <description>Servicio REST de usuarios</description>
-            <get uri="/findAll">
+            <get>
                 <description>Encuentra todos los usuarios</description>
-                <to uri="bean:userService?method=getAllUsers()" />
+                <to uri="bean:userService?method=getAllUsers" />
             </get>
             <post type="mx.training.rest.model.User" outType="mx.training.rest.model.User">
                 <description>Crea un usuario</description>
@@ -38,12 +39,11 @@
             </post>
             <get uri="/{id}" outType="mx.training.rest.model.User">
                 <description>Obtener un usuario por su id</description>
-                <param name="id" type="path" dataType="int"/>
+                <param name="id" type="path" dataType="int" description="Id de usuario"/>
                 <to uri="bean:userService?method=getUser(${header.id})"/>
             </get>
-            <put type="mx.training.rest.model.User">
+            <put type="mx.training.rest.model.User" outType="mx.training.rest.model.User">
                 <description>Actualiza la informacion de un usuario</description>
-                <param name="body" type="body" description="El usuario a actualizar"/>
                 <to uri="bean:userService?method=updateUser"/>
             </put>
             <delete uri="/{id}">

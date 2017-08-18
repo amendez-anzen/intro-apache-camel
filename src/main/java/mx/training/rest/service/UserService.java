@@ -17,9 +17,9 @@ public class UserService {
         return user;
     }
 
-    public int createUser(User newUser){
+    public User createUser(User newUser){
         //TODO: Definir logica para crear usuario.
-        return newUser.getId();
+        return newUser;
     }
 
     public User updateUser(User modifiedUser){
@@ -28,6 +28,14 @@ public class UserService {
     }
 
     public List<User> getAllUsers(){
+        //TODO: Definir logica para obtener listado de usuarios.
+        for(int i=0; i<10; ++i){
+            User user = new User();
+            user.setId(i+1);
+            user.setFirstName("lorem "+ i);
+            user.setLastName("ipsum " + i);
+            findAllUsers.add(user);
+        }
         return findAllUsers;
     }
 
