@@ -58,7 +58,7 @@ standalone, como una variable de instancia en dentro de _javax.servlet.ServletCo
 una aplicación web, iniciándola y deteniéndola con la aplicación; en un objeto ligado al ciclo de
 vida de un bundle de _OSGi_; un objeto dentro del contexto de Spring, etc.
 
-* Revisar ejemplo: [simplespring-context.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/simplespring-context.xml)
+* Revisar ejemplo: [simplespring-context.xml](./src/main/resources/META-INF/spring/simplespring-context.xml)
 
 
 Un _component_ es una fábrica para crear endpoints que pueden ser _Producers_, _Consumers_ o ambos. Una implementación tiene típicamente propiedades, por ejemplo:
@@ -95,8 +95,8 @@ Camel abstrae código de integración encapsulándolo en _Components_, lo que pe
 enfocarse en la lógica de negocio de tu integración sin que entres en el detalle
 fino del "transporte".
 
-* Ejemplo : [simplespring-context.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/simpleSpring-context.xml)
-* Ejemplo con _@Component_: [simplespringcomponent-context.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/simplespringcomponent-context.xml)
+* Ejemplo : [simplespring-context.xml](./src/main/resources/META-INF/spring/simpleSpring-context.xml)
+* Ejemplo con _@Component_: [simplespringcomponent-context.xml](./src/main/resources/META-INF/spring/simplespringcomponent-context.xml)
 
 Ejecutar
 > mvn test
@@ -135,7 +135,7 @@ disponibles, los siguientes componentes están integrados con _REST DSL_.
 
 > NOTA: El componente _Rest_ (_camel-core_) no es una implementación _REST_. Al igual que _REST DSL_ es sólo un _facade_, por lo que requiere una implementación.
 
-Ejemplo configuración _camel-restlet_: [camel-config.xml](https://github.com/hereje/intro-apache-camel/blob/master/src/main/resources/META-INF/spring/camel-config.xml)
+Ejemplo configuración _camel-restlet_: [camel-config.xml](./src/main/resources/META-INF/spring/camel-config.xml)
 
 **Ejecutar**
 > mvn jetty:run
