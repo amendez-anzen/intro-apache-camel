@@ -2,10 +2,10 @@
 Conceptos básicos de apache camel y patrones de integración.
 
 **Requisitos**
-* Conocimiento de Spring
+* [IoC  e Inyección de dependencias con Spring Framework](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html)
 * XML
-* Json
-* Maven
+* JSON
+* [Maven 3.x](https://maven.apache.org/)
 
 
 ## Introducción
