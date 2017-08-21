@@ -95,7 +95,7 @@ Camel abstrae código de integración encapsulándolo en _Components_, lo que pe
 enfocarse en la lógica de negocio de tu integración sin que entres en el detalle
 fino del "transporte".
 
-* Ejemplo : [simplespring-context.xml](./src/main/resources/META-INF/spring/simpleSpring-context.xml)
+* Ejemplo : [simplespring-context.xml](./src/main/resources/META-INF/spring/simplespring-context.xml)
 * Ejemplo con _@Component_: [simplespringcomponent-context.xml](./src/main/resources/META-INF/spring/simplespringcomponent-context.xml)
 
 Ejecutar
