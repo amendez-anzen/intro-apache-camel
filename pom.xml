@@ -60,6 +60,14 @@
       <artifactId>camel-restlet</artifactId>
       <version>${camel.version}</version>
     </dependency>
+
+    <!-- Jetty component: Provee endpoints basados en http -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jetty</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+
     <!-- use for json binding -->
     <dependency>
       <groupId>org.apache.camel</groupId>

@@ -13,6 +13,10 @@
         <constructor-arg ref="RestletComponent"/>
         <property name="maxThreads" value="100"/>
     </bean>
+    <!-- Registrar configuracion de properties como bean -->
+    <bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
+        <property name="location" value="classpath:config.properties"/>
+    </bean>
 
     <!-- Bean para servicio de usuarios -->
     <bean id="userService" class="mx.training.rest.service.UserService"/>
@@ -100,6 +104,12 @@
             <setBody>
                 <simple>Person with id ${header.personId}</simple>
             </setBody>
+        </route>
+
+        <!-- Camel como un proxy HTTP entre cliente y servidor -->
+        <route>
+            <from uri="jetty:{{camel-proxy-endpoint}}?matchOnUriPrefix=true"/>
+            <to uri="jetty:{{accitrade-rest-endpoint}}?bridgeEndpoint=true&amp;throwExceptionOnFailure=false"/>
         </route>
     </camelContext>
 
